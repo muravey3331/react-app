@@ -1,0 +1,21 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.lists-wrapper{
+  padding-top: 20px;
+  display: flex;
+  justify-content:space-around;
+  width: 100%;
+}
+.list{
+  width: 28%;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 4px 4px lightblue;
+  border-radius: 4px ;
+}
+.card{
+  text-align: left;
+}
