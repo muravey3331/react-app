@@ -22,7 +22,7 @@ export class Card extends Component {
         if (this.state.showDetails) {
             showDetail = <div>
                 {this.props.description}
-                <CheckList tasks={this.props.tasks}/>
+                <CheckList tasks={this.props.tasks} taskCallbacks={this.props.taskCallbacks}/>
             </div>
         }
         let cardStyle = {

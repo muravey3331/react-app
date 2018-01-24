@@ -3,6 +3,7 @@ import KanbanBoard from "./KanbanBoard";
 import './App.css';
 
 // import 'whatwg-fetch';
+const API_URL = './todo.json';
 
 class App extends Component {
     constructor() {
@@ -10,10 +11,16 @@ class App extends Component {
         this.state = {
             todoList: []
         };
+
+        this.addTask = this.addTask.bind(this);
+        this.deleteTask = this.deleteTask.bind(this);
+        this.toggleTask = this.toggleTask.bind(this);
     }
 
+
+
     componentDidMount() {
-        fetch('./todo.json')
+        fetch(API_URL)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -26,8 +33,25 @@ class App extends Component {
                 });
     }
 
+    addTask(cardId, taskName) {
+
+    }
+
+    deleteTask(cardId, taskId, taskIndex) {
+
+    }
+
+    toggleTask(cardId, taskId, taskIndex) {
+
+    }
+
     render() {
-        return <KanbanBoard cards={this.state.todoList}/>
+        return <KanbanBoard cards={this.state.todoList}
+                            taskCallbacks={{
+                                toggle: this.toggleTask,
+                                delete: this.deleteTask,
+                                add: this.addTask
+                            }}/>
     }
 }
 

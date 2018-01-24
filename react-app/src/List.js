@@ -12,7 +12,8 @@ export class List extends Component {
                    description={card.description}
                    id={card.id}
                    tasks={card.tasks}
-                   color={card.color}/>)
+                   color={card.color}
+                   askCallbacks={this.props.taskCallbacks}/>)
         );
         return (<div className="list">
             <h1>{this.props.title}</h1>
@@ -23,7 +24,8 @@ export class List extends Component {
 
 List.propTypes = {
     title: PropTypes.string.isRequired,
-    cards: PropTypes.arrayOf(PropTypes.object)
+    cards: PropTypes.arrayOf(PropTypes.object),
+    taskCallbacks: PropTypes.object
 };
 
 export default List;
