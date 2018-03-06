@@ -1,15 +1,15 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 
 
-const Task = () => {
+const Task = ({onDeleteTask, taskName, id}) => {
 
     const handleDeleteTask = () => {
-        console.log('delete task')
-        onDeleteTrack()
+        console.log('delete task');
+        onDeleteTask(id)
     };
     return (
-        <div>
+        <div>{taskName}
             <button onClick={handleDeleteTask}>X</button>
         </div>
     )
@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onDeleteTrack: (id) => {
+        onDeleteTask: (id) => {
             dispatch({type: "DELETE_TASK", payload: id})
         }
     }

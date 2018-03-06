@@ -3,7 +3,7 @@ const initialState = {
     tasks:[
         {
             id:1,
-            name: 'Learn ReactJs'
+            name: 'Learn ReactJS'
         },
         {
             id:2,
@@ -25,6 +25,12 @@ export default function card(state = initialState, action) {
 
             };
         case 'DELETE_TASK':
+            console.log(state.tasks);
+            console.log(action.payload);
+            return {
+                ...state,
+                tasks: state.tasks.filter(task => task.id !== action.payload)
+            };
 
         default: return state
     }

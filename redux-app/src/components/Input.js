@@ -1,11 +1,11 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {connect} from 'react-redux'
 
-const Input = ({onAddTrack}) => {
+const Input = ({onAddTask}) => {
 
     const handleAddTask = () => {
         console.log('add task', this.taskName.value);
-        onAddTrack(this.taskName.value);
+        onAddTask(this.taskName.value);
         this.taskName.value = '';
     };
 
@@ -23,7 +23,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onAddTrack: (name) => {
+        onAddTask: (name) => {
             const payload = {
                 id: Date.now().toString(),
                 name
