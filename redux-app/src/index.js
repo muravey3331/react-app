@@ -1,47 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
 import {Provider} from 'react-redux'
-import {createStore} from 'redux';
+import {createStore, applyMiddleware} from 'redux';
 
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunk from 'redux-thunk';
 
-const initialState = [
-    "Smells like teen spirit",
-    "Ender sadman"
-];
+import App from './components/App';
+import reducer from './reducers';
 
-function playlist(state = initialState, action) {
-    if (action.type === "ADD_TRACK") {
-        return [
-            ...state,
-            action.payload
-        ]
-    }
-    return state;
-}
 
-const store = createStore(playlist, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+const store = createStore(reducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
     <Provider store={store}>
         <App/>
     </Provider>,
     document.getElementById('root'));
-registerServiceWorker();
 
 
-
-// store.subscribe(() => {
-//     console.log(store.getState());
-// });
-//
-// store.dispatch({
-//     type: 'ADD_TRACK',
-//     payload: "Smells like teen spirit"
-//
-// });
-// store.dispatch({
-//     type: 'ADD_TRACK',
-//     payload: "Ender sadman"
-// });

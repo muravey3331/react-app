@@ -1,8 +1,8 @@
-import { combineReducers } from 'redux';
-import  tracks  from './tracks';
-import  playlists  from './playlists';
+import {combineReducers} from 'redux';
+import card from './card';
 
-export default combineReducers({
-    tracks,
-    playlists
-})
+export default combineReducers(
+    {
+        card
+    }
+);
