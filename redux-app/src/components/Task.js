@@ -2,14 +2,18 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 
-const Task = ({onDeleteTask, taskName, id}) => {
+const Task = ({onDeleteTask, onToggleStatus, taskName, id, status}) => {
 
     const handleDeleteTask = () => {
-        console.log('delete task');
         onDeleteTask(id)
     };
+    const handleToggleStatus = () => {
+        onToggleStatus(id);
+        console.log('status was changed')
+    };
     return (
-        <div>{taskName}
+        <div>
+            <input type="checkbox" defaultChecked={status} onChange={handleToggleStatus}/>{taskName}
             <button onClick={handleDeleteTask}>X</button>
         </div>
     )
@@ -26,6 +30,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onDeleteTask: (id) => {
             dispatch({type: "DELETE_TASK", payload: id})
+        },
+        onToggleStatus: (id) =>{
+            dispatch({type: "TOGGLE_TASK_STATUS", payload:id})
         }
     }
 };

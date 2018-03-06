@@ -4,7 +4,7 @@ import {connect} from 'react-redux'
 const Input = ({onAddTask}) => {
 
     const handleAddTask = () => {
-        console.log('add task', this.taskName.value);
+        if (this.taskName.value === '') return;
         onAddTask(this.taskName.value);
         this.taskName.value = '';
     };

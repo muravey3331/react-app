@@ -11,7 +11,7 @@ const TaskList = ({tasks}) => {
                 {tasks.map((task, index) => {
                     return (
                         <li key={index}>
-                            <Task taskName={task.name} id={task.id}/>
+                            <Task taskName={task.name} id={task.id} status={task.done}/>
                         </li>
                     );
                 })}
