@@ -1,23 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-const Input = ({onAddTask}) => {
+const Input = ({ onAddTask}) => {
 
-    const handleAddTask = () => {
+    const handleAddTask = (e) => {
+        e.preventDefault();
+        if (this.taskName.value === '') return;
         onAddTask(this.taskName.value);
         this.taskName.value = '';
     };
 
     return (
-        <div>
-            <input type="text" ref={input => this.taskName = input} placeholder="add new task"/>
-            <button onClick={handleAddTask}>add Task</button>
-        </div>
+        <form onSubmit={handleAddTask}>
+            <input type="text"
+                   ref={input => this.taskName = input}
+                   placeholder="add new task"/>
+        </form>
     )
 };
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
@@ -25,7 +29,8 @@ const mapDispatchToProps = (dispatch) => {
         onAddTask: (name) => {
             const payload = {
                 id: Date.now().toString(),
-                name
+                name,
+                done: false
             };
             dispatch({type: "ADD_TASK", payload})
         }

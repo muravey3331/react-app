@@ -1,39 +1,27 @@
-const initialState = {
-    name: 'My first card',
-    tasks:[
-        {
-            id:1,
-            name: 'Learn ReactJS',
-            done: true
-        },
-        {
-            id:2,
-            name: 'Learn Redux',
-            done: false
-        },
-        {
-            id:3,
-            name: 'Learn NodeJS',
-            done: true
-        }
-    ]
-};
+import {initialState} from './index';
 
 export default function card(state = initialState, action) {
-    switch (action.type){
-        case 'ADD_TASK':
+    switch (action.type) {
+        case 'SHOW_ALL':
             return {
                 ...state,
-                tasks: [...state.tasks, action.payload]
-
+                tasks: state.tasks
             };
-        case 'DELETE_TASK':
+        case 'SHOW_ACTIVE':
+            console.log('show active');
             return {
-                ...state,
-                tasks: state.tasks.filter(task => task.id !== action.payload)
-            };
+                ...state
+                // tasks: state.tasks.filter(task => task.done)
 
-        default: return state
+            };
+        case 'SHOW_COMPLETED':
+            console.log('show completed');
+            return {
+                ...state
+                // tasks: state.tasks.filter(task => !task.done)
+
+            };
+        default:
+            return state
     }
-
 }
