@@ -3,6 +3,7 @@ import {initialState} from './index';
 export default function card(state = initialState, action) {
     switch (action.type) {
         case 'SHOW_ALL':
+            console.log('show all');
             return {
                 ...state,
                 tasks: state.tasks

@@ -2,24 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Filter = ({ onFilterAll, onFilterActive, onFilterCompleted }) => {
-    const handleFilterAll = (e) =>{
-        e.preventDefault();
+    const handleFilterAll = () =>{
         onFilterAll()
     };
-    const handleFilterActive = (e) =>{
-        e.preventDefault();
+    const handleFilterActive = () =>{
         onFilterActive()
     };
-    const handleFilterCompleted = (e) =>{
-        e.preventDefault();
+    const handleFilterCompleted = () =>{
         onFilterCompleted();
     };
 
     return (
         <div>
-            <a href="#" onClick={handleFilterAll}>all</a>
-            <a href="#" onClick={handleFilterActive}>active</a>
-            <a href="#" onClick={handleFilterCompleted}>completed</a>
+            <button onClick={handleFilterAll}>all</button>
+            <button onClick={handleFilterActive}>active</button>
+            <button onClick={handleFilterCompleted}>completed</button>
         </div>
     )
 };
