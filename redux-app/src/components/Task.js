@@ -2,14 +2,17 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 
-const Task = ({onDeleteTask, taskName, id}) => {
+const Task = ({onDeleteTask, taskName, id, status}) => {
 
     const handleDeleteTask = () => {
-        console.log('delete task');
         onDeleteTask(id)
     };
+    console.log(status);
+
     return (
-        <div>{taskName}
+        <div>
+            <input type="checkbox" defaultChecked={status}/>
+            {taskName}
             <button onClick={handleDeleteTask}>X</button>
         </div>
     )
