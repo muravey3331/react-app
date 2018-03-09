@@ -5,6 +5,8 @@ import Task from './Task';
 
 const TaskList = ({tasks}) => {
 
+    //  visibilityTasks = dispatch();
+
     return (
         <ul>
             {tasks.map((task, index) => {
@@ -26,7 +28,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TaskList);

@@ -1,42 +1,25 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import FilterLink from './FilterLink'
 
-const Filter = ({ onFilterAll, onFilterActive, onFilterCompleted }) => {
-    const handleFilterAll = () =>{
-        onFilterAll()
-    };
-    const handleFilterActive = () =>{
-        onFilterActive()
-    };
-    const handleFilterCompleted = () =>{
-        onFilterCompleted();
-    };
 
+const Filter = () => {
     return (
         <div>
-            <button onClick={handleFilterAll}>all</button>
-            <button onClick={handleFilterActive}>active</button>
-            <button onClick={handleFilterCompleted}>completed</button>
+            Show: {' '}
+            <FilterLink filter="SHOW_ALL" text="All"/><FilterLink/>{' '}
+            <FilterLink filter="SHOW_ACTIVE" text="Active"/><FilterLink/>{' '}
+            <FilterLink filter="SHOW_COMPLETED" text="Completed"/><FilterLink/>{' '}
         </div>
     )
 };
 
-const mapStateToProps = (state) => {
-    return {
-    }
+const mapStateToProps = () => {
+    return{}
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onFilterAll: () => {
-            dispatch({type: "SHOW_ALL"})
-        },
-        onFilterActive: () => {
-            dispatch({type: "SHOW_ACTIVE"})
-        },
-        onFilterCompleted: () => {
-            dispatch({type: "SHOW_COMPLETED"})
-        },
     }
 };
 

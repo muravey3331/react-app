@@ -6,10 +6,11 @@ import Input from './Input';
 import Filter from './Filter';
 
 const Card = ({card}) => {
+
     return (
-        <div>
+        <div className="card">
             <h1>{card.name}</h1>
-            <h4>{card.description}</h4>
+            <p>{card.description}</p>
             <Filter />
             <TaskList />
             <Input />
@@ -21,7 +22,6 @@ const Card = ({card}) => {
 const mapStateToProps = (state) => {
     return {
         card: state.card
-
     }
 };
 

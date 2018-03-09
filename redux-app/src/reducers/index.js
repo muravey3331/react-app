@@ -1,10 +1,10 @@
 import {combineReducers} from 'redux';
 import card from './card';
-import task from './task';
+import filter from './filter'
 
 export const initialState = {
     editingElem: null,
-    name: 'My first card',
+    name: 'My first React ToDo ',
     description: 'card description',
     tasks:[
         {
@@ -24,6 +24,23 @@ export const initialState = {
             name: 'Learn NodeJS',
             done: false,
             isEditing: false
+        },{
+            id:4,
+            name: 'Learn HTML5',
+            done: true,
+            isEditing: false
+        },
+        {
+            id:5,
+            name: 'Learn CSS3',
+            done: true,
+            isEditing: false
+        },
+        {
+            id:6,
+            name: 'Learn JavaScript',
+            done: false,
+            isEditing: false
         }
     ]
 };
@@ -31,6 +48,6 @@ export const initialState = {
 export default combineReducers(
     {
         card,
-        task
+        filter
     }
 );

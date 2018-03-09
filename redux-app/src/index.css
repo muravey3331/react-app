@@ -2,4 +2,71 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background: #ededed;
 }
+ul{
+  padding: 0;
+}
+li{
+  list-style: none;
+}
+*{
+  outline: none;
+}
+.card{
+  margin: 40px auto;
+  width: 360px;
+  padding: 30px;
+  background: #fff;
+}
+.task-item{
+  width: 100%;
+  border-bottom: 1px solid #efefef;
+  display: flex;
+  justify-content:space-between;
+}
+.task-item:hover .delete-btn{
+  opacity: 1;
+}
+.task__text{
+  position: relative;
+  display: block;
+  width: 100%;
+  line-height: 40px;
+  font-size: 1rem;
+}
+
+.task__text:hover{
+  cursor: pointer;
+
+}
+.delete-btn{
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0;
+  height: 40px;
+  width: 40px;
+  border: none;
+  background: #fff;
+}
+.delete-btn:hover{
+  cursor: pointer;
+  background: #efefef;
+}
+.edit-field{
+  width: 100%;
+  height: 40px;
+  border: none;
+  font-size: 1rem;
+  border-bottom:1px solid #999;
+}
+.add-field{
+  padding-left: 20px;
+  border: 1px dashed royalblue;
+  border-radius: 5px;
+  width: 100%;
+  height: 40px;
+  box-sizing: border-box;
+}
+

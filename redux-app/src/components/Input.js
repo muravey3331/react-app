@@ -1,7 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux'
 
-const Input = ({ onAddTask}) => {
+const Input = ({onAddTask}) => {
 
     const handleAddTask = (e) => {
         e.preventDefault();
@@ -12,7 +12,8 @@ const Input = ({ onAddTask}) => {
 
     return (
         <form onSubmit={handleAddTask}>
-            <input type="text"
+            <input className="add-field"
+                   type="text"
                    ref={input => this.taskName = input}
                    placeholder="add new task"/>
         </form>
@@ -20,8 +21,7 @@ const Input = ({ onAddTask}) => {
 };
 
 const mapStateToProps = (state) => {
-    return {
-    }
+    return {}
 };
 
 const mapDispatchToProps = (dispatch) => {

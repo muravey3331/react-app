@@ -2,7 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 
-const Task = ({ onDeleteTask, onToggleStatus, onEditTask, onChangeTaskName, onEndEditTask, taskName, id, status, isEditing}) => {
+const Task = ({onDeleteTask, onToggleStatus, onEditTask, onChangeTaskName, onEndEditTask, taskName, id, status, isEditing}) => {
 
     const handleDeleteTask = () => {
         onDeleteTask(id)
@@ -17,20 +17,19 @@ const Task = ({ onDeleteTask, onToggleStatus, onEditTask, onChangeTaskName, onEn
         onChangeTaskName(e.target.value)
     };
     const handleEndEditTask = () => {
-        onEndEditTask();
+        taskName ? onEndEditTask() : onDeleteTask(id);
     };
 
     const task = (
-        <div>
-            <input type="checkbox"
-                   defaultChecked={status}
-                   onChange={handleToggleStatus}/>
-            <span onClick={handleEditTask}>{taskName}</span>
-            <button onClick={handleDeleteTask}>X</button>
+        <div className="task__text"
+             onDoubleClick={handleEditTask}>
+            <span>{taskName}</span>
+            <button className="delete-btn" onClick={handleDeleteTask}>X</button>
         </div>
     );
     const taskInput = (
-        <input onChange={handleChangeTaskName}
+        <input className="edit-field"
+               onChange={handleChangeTaskName}
                onBlur={handleEndEditTask}
                defaultValue={taskName}
                type="text"
@@ -38,7 +37,10 @@ const Task = ({ onDeleteTask, onToggleStatus, onEditTask, onChangeTaskName, onEn
     );
 
     return (
-        <div>
+        <div  className="task-item">
+            <input type="checkbox"
+                   checked={status}
+                   onChange={handleToggleStatus}/>
             {isEditing ? taskInput : task}
         </div>
     )
@@ -62,10 +64,10 @@ const mapDispatchToProps = (dispatch) => {
         onEditTask: (id) => {
             dispatch({type: "EDIT_TASK", id})
         },
-        onChangeTaskName: (name) =>{
+        onChangeTaskName: (name) => {
             dispatch({type: "CHANGE_TASK_NAME", name})
         },
-        onEndEditTask: () =>{
+        onEndEditTask: () => {
             dispatch({type: "END_EDIT_TASK"})
         }
     }
